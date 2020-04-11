@@ -1,0 +1,24 @@
+{
+  "name": "todayinmusic",
+  "version": "1.0.0",
+  "description": "find music released on today's date",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boxcarcoder/TodayInMusic.git"
+  },
+  "keywords": [
+    "music",
+    "spotify",
+    "api"
+  ],
+  "author": "brendan cheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boxcarcoder/TodayInMusic/issues"
+  },
+  "homepage": "https://github.com/boxcarcoder/TodayInMusic#readme"
+}

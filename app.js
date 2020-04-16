@@ -3,7 +3,6 @@ const express = require("express");
 const authRouter = require("./controllers/auth");
 const cors = require("cors");
 var cookieParser = require("cookie-parser");
-const todayInMusic = require("./controllers/todayInMusic");
 
 // initialize app with Express to create client to communicate with Spotify
 const app = express();

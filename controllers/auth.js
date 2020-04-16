@@ -50,7 +50,8 @@ authRouter.get("/", async (req, res) => {
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
 
-    // Request for user full name, profile image, and email address.
+    // user-read-private: Read access to user's subscription details. Required for Search endpoints.
+    // user-read-email: Get user's email
     var scope = "user-read-private user-read-email";
 
     // 1. Get the user's authorization to access data.
@@ -70,7 +71,8 @@ authRouter.get("/", async (req, res) => {
 });
 
 // @route   GET /callback
-// @desc    Spotify callback to request access and refresh tokens
+// @desc    Spotify callback to request access and refresh tokens.
+//          This is called after a user authorizes since it is designated as the Redirect URI.
 authRouter.get("/callback", async (req, res) => {
   try {
     console.log("get /callback successful.");
@@ -101,14 +103,23 @@ authRouter.get("/callback", async (req, res) => {
           var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-          // Send the tokens to the client so the client can use them in requests to the Spotify API.
+          // Send the access token to the frontend so the frontend can use them in requests to the Spotify API.
           res.redirect(
-            "/todayInMusic?" +
+            "http://localhost:3000/#" +
               querystring.stringify({
                 access_token: access_token,
                 refresh_token: refresh_token,
               })
           );
+
+          // Send the tokens to the client so the client can use them in requests to the Spotify API.
+          // res.redirect(
+          //   "/todayInMusic?" +
+          //     querystring.stringify({
+          //       access_token: access_token,
+          //       refresh_token: refresh_token,
+          //     })
+          // );
         } else {
           res.redirect(
             "/#" +
@@ -123,6 +134,17 @@ authRouter.get("/callback", async (req, res) => {
     console.log("/callback error.");
   }
 });
+
+// // @route   GET /todayInMusic
+// // @desc    Where the access and refresh token will be sent to.
+// authRouter.get("/todayInMusic", async (req, res) => {
+//   try {
+//     // *** Try loading a component from the front end instead?
+//     res.sendFile(path.join(__dirname + "/../views/todayInMusic.html"));
+//   } catch {
+//     console.log(" error in get /todayInMusic");
+//   }
+// });
 
 // @route   GET /refreshToken
 // @desc    Spotify callback to refresh an access token
@@ -158,10 +180,4 @@ authRouter.get("/refreshToken", async (req, res) => {
   }
 });
 
-authRouter.get("/todayInMusic", async (req, res) => {
-  try {
-  } catch {
-    res.sendFile(path.join(__dirname + "/../views/todayInMusic.html"));
-  }
-});
 module.exports = authRouter;

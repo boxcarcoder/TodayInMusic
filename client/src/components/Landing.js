@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
 // redux
+import { connect } from "react-redux";
 import { getAllAlbums } from "../actions/albums";
 
 const Landing = ({ getAllAlbums }) => {

@@ -9,7 +9,7 @@ export const getAllAlbums = () => async (dispatch) => {
       type: RETRIEVE_ALBUMS,
       payload: res.data,
     });
-  } catch {
+  } catch (err) {
     dispatch({
       type: ALBUM_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

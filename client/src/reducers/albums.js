@@ -1,4 +1,4 @@
-import { RETRIEVE_ALBUMS, ALBUM_ERROR } from "./types";
+import { RETRIEVE_ALBUMS, ALBUM_ERROR } from "../actions/types";
 
 const initialState = {
   albums: [],

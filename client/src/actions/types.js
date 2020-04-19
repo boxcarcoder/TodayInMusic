@@ -1,0 +1,2 @@
+export const RETRIEVE_ALBUMS = "RETRIEVE_ALBUMS";
+export const ALBUM_ERROR = "ALBUM_ERROR";

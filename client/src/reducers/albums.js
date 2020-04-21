@@ -1,4 +1,4 @@
-import { RETRIEVE_ALBUMS, ALBUM_ERROR } from "../actions/types";
+import { RETRIEVE_ALBUMS, ALBUMS_ERROR } from "../actions/types";
 
 const initialState = {
   albums: [],
@@ -13,6 +13,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         albums: payload,
+        loading: false,
+      };
+    case ALBUMS_ERROR:
+      return {
+        ...state,
+        error: payload,
         loading: false,
       };
 

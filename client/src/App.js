@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./components/Landing";
+import Auth from "./components/Auth";
 
 //redux
 import { Provider } from "react-redux";
@@ -12,17 +13,19 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Route exact path="/" component={Landing} />
-          {/* <section className="container">
+          <Route exact path="/" component={Auth} />
+          <section className="container">
             <Switch>
-              <Route exact path="/MusicToday" component={MusicToday} />
+              <Route exact path="/Landing" component={Landing} />
+
+              {/* <Route exact path="/MusicToday" component={MusicToday} />
               <Route
                 exact
                 path="/MusicTodayPersonalized"
                 component={MusicTodayPersonalized}
-              />
+              /> */}
             </Switch>
-          </section> */}
+          </section>
         </Fragment>
       </Router>
     </Provider>

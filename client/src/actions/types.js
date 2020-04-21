@@ -1,2 +1,4 @@
 export const RETRIEVE_ALBUMS = "RETRIEVE_ALBUMS";
-export const ALBUM_ERROR = "ALBUM_ERROR";
+export const ALBUMS_ERROR = "ALBUM_ERROR";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_ERROR = "AUTH_ERROR";

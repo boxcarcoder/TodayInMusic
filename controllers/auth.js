@@ -46,7 +46,6 @@ const getAuthOptions = function (code, redirect_uri, client_id, client_secret) {
 // @desc    Prompt User to Login into Spotify
 authRouter.get("/", async (req, res) => {
   try {
-    console.log("get / succesfful.");
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
 
@@ -105,21 +104,12 @@ authRouter.get("/callback", async (req, res) => {
 
           // Send the access token to the frontend so the frontend can use them in requests to the Spotify API.
           res.redirect(
-            "http://localhost:3000/#" +
+            "http://localhost:3000/Landing/#" +
               querystring.stringify({
                 access_token: access_token,
                 refresh_token: refresh_token,
               })
           );
-
-          // Send the tokens to the client so the client can use them in requests to the Spotify API.
-          // res.redirect(
-          //   "/todayInMusic?" +
-          //     querystring.stringify({
-          //       access_token: access_token,
-          //       refresh_token: refresh_token,
-          //     })
-          // );
         } else {
           res.redirect(
             "/#" +
@@ -134,17 +124,6 @@ authRouter.get("/callback", async (req, res) => {
     console.log("/callback error.");
   }
 });
-
-// // @route   GET /todayInMusic
-// // @desc    Where the access and refresh token will be sent to.
-// authRouter.get("/todayInMusic", async (req, res) => {
-//   try {
-//     // *** Try loading a component from the front end instead?
-//     res.sendFile(path.join(__dirname + "/../views/todayInMusic.html"));
-//   } catch {
-//     console.log(" error in get /todayInMusic");
-//   }
-// });
 
 // @route   GET /refreshToken
 // @desc    Spotify callback to refresh an access token

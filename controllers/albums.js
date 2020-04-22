@@ -4,21 +4,12 @@ const axios = require("axios");
 // @route   GET /api/albums
 albumsRouter.get("/", async (req, res) => {
   try {
-    // let access_token = req.params.access_token;
-
-    // console.log("REQ: ", req);
-    // console.log("REQ.PARAMS: ", req.params);
-    // console.log("ACCESS TOKEN: ", access_token);
-
-    let access_token = req.query.access_token;
-
-    console.log("REQ: ", req);
-    console.log("REQ.QUERY: ", req.query);
-    console.log("ACCESS TOKEN: ", access_token);
+    // get the access token sent from the getAllAlbums action.
+    let accessToken = req.headers.authorization;
 
     let options = {
       // prettier-ignore
-      headers: { 'Authorization': "Bearer " + access_token },
+      headers: { 'Authorization': "Bearer " + accessToken },
       json: true,
     };
 

@@ -1,15 +1,15 @@
 import { RETRIEVE_ALBUMS, ALBUMS_ERROR } from "./types";
 import axios from "axios";
 
-export const getAllAlbums = () => async (dispatch) => {
+export const getAllAlbums = (accessToken) => async (dispatch) => {
   try {
-    // *** Here is where we are sending the get request to /api/albums.
-    // here is where we should be sending the access token
-    // either from the req params or query.
-    // *** Won't have to get access token from params or query if we send
-    // the access token somewhere else. Right now the backend is sending
-    // the access token to the url as a query.
-    const res = await axios.get("/api/albums");
+    // send the request to get all albums to the backend with the access token.
+    let options = {
+      // prettier-ignore
+      headers: { 'Authorization': accessToken },
+      json: true,
+    };
+    const res = await axios.get("/api/albums", options);
 
     dispatch({
       type: RETRIEVE_ALBUMS,

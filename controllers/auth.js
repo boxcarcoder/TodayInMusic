@@ -104,7 +104,7 @@ authRouter.get("/callback", async (req, res) => {
 
           // Send the access token to the frontend so the frontend can use them in requests to the Spotify API.
           res.redirect(
-            "http://localhost:3000/Landing/#" +
+            "http://localhost:3000/Landing/?" +
               querystring.stringify({
                 access_token: access_token,
                 refresh_token: refresh_token,

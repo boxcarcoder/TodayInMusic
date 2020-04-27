@@ -51,7 +51,8 @@ authRouter.get("/", async (req, res) => {
 
     // user-read-private: Read access to user's subscription details. Required for Search endpoints.
     // user-read-email: Get user's email
-    var scope = "user-read-private user-read-email";
+    // user-top-read: Read access to user's top artists and tracks
+    var scope = "user-read-private user-read-email user-top-read";
 
     // 1. Get the user's authorization to access data.
     res.redirect(

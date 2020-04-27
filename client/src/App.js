@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Landing from "./components/Landing";
-import Auth from "./components/Auth";
+import Landing from "./components/layout/Landing";
+import Auth from "./components/layout/Auth";
+import Albums from "./components/albums/Albums";
 
 //redux
 import { Provider } from "react-redux";
@@ -17,6 +18,7 @@ const App = () => {
           <section className="container">
             <Switch>
               <Route exact path="/Landing" component={Landing} />
+              <Route exact path="/Albums" component={Albums} />
 
               {/* <Route exact path="/MusicToday" component={MusicToday} />
               <Route

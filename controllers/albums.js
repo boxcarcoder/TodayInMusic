@@ -1,7 +1,7 @@
 const albumsRouter = require("express").Router();
 const axios = require("axios");
 
-// const getAllSongs = async (options) => {
+// const fetchSongsFromSpotify = async (options) => {
 //   try {
 //     const date = new Date();
 //     console.log(date.toISOString().slice(5, 7)); //get month and date only.
@@ -46,45 +46,48 @@ const axios = require("axios");
 //   }
 // };
 
-const getAllAlbums = async (options) => {
+const fetchAlbumsFromSpotify = async (options) => {
   try {
+    let allAlbums = [];
     const date = new Date();
     console.log(date.toISOString().slice(5, 7)); //get month and date only.
 
-    var albums = await axios.get(
+    console.log("sending request to spotify.");
+    var albumsFromSpotify = await axios.get(
       "https://api.spotify.com/v1/search?type=album&q=year:1900-2020&limit=50",
       options
     );
 
-    let limit = albums.data.albums.limit;
+    let limit = albumsFromSpotify.data.albums.limit;
 
     // Spotify api allows the max offset to be 2000.
     // Each call returns 50 albums. 50 * 40 calls = 2000 albums.
     for (let i = 0; i < 2000; i = i + limit) {
       // Get 50 albums per call.
-      albums = await axios.get(
+      albumsFromSpotify = await axios.get(
         "https://api.spotify.com/v1/search?type=album&q=year:1900-2020&limit=50&offset=" +
           i,
         options
       );
 
-      // Traverse the 50 albums returned by the API call
-      for (let j = 0; j < albums.data.albums.items.length; j++) {
-        // Each item is an album object.
+      // Traverse the 50 albums returned by the API call to find a matching release date.
+      // Each item is an album object.
+      for (let j = 0; j < albumsFromSpotify.data.albums.items.length; j++) {
         if (
-          albums.data.albums.items[j].release_date.slice(5, 10) ===
+          albumsFromSpotify.data.albums.items[j].release_date.slice(5, 10) ===
           date.toISOString().slice(5, 10)
         ) {
-          console.log(
-            albums.data.albums.items[j].artists[0].name +
-              ": " +
-              albums.data.albums.items[j].name
-          );
+          // console.log(
+          //   albumsFromSpotify.data.albums.items[j].artists[0].name +
+          //     ": " +
+          //     albumsFromSpotify.data.albums.items[j].name
+          // );
+          allAlbums.push(albumsFromSpotify.data.albums.items[j]);
         }
       }
     }
-
     console.log("done scraping.");
+    return allAlbums;
   } catch (err) {
     console.log("error fetching all albums");
     console.error(err);
@@ -103,7 +106,9 @@ albumsRouter.get("/", async (req, res) => {
       json: true,
     };
 
-    getAllAlbums(options);
+    let allAlbums = await fetchAlbumsFromSpotify(options);
+
+    res.json(allAlbums);
   } catch (err) {
     console.log("back end error fetching.");
 

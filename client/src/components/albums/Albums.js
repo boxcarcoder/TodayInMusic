@@ -26,7 +26,13 @@ const Albums = ({ albumsState: { albums, loading } }) => {
       //     );
       //   }
       return albums.map((album) => (
-        <AlbumItem name={album.name} artist={album.artists[0].name} />
+        <AlbumItem
+          key={album.id}
+          name={album.name}
+          artist={album.artists[0].name}
+          img={album.images[1]}
+          url={album.external_urls}
+        />
       ));
     }
   };

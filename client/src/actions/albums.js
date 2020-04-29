@@ -1,7 +1,7 @@
-import { RETRIEVE_ALBUMS, ALBUMS_ERROR } from "./types";
+import { RETRIEVE_ALBUMS, ALBUMS_ERROR, LAST_ALBUM_RETRIEVED } from "./types";
 import axios from "axios";
 
-export const getAllAlbums = (accessToken) => async (dispatch) => {
+export const getAllAlbums = (accessToken, decade) => async (dispatch) => {
   try {
     // Send the request, to get all albums, to the backend with the access token.
     let options = {
@@ -10,13 +10,18 @@ export const getAllAlbums = (accessToken) => async (dispatch) => {
       json: true,
     };
 
-    console.log("sent out action");
-    const res = await axios.get("/api/albums", options);
+    for (let year = decade; year < decade + 10; year++) {
+      console.log("sent out action");
+      const res = await axios.get(`/api/albums/${year}`, options);
+      console.log("got data back from spotify");
 
-    console.log("got data back from spotify");
+      dispatch({
+        type: RETRIEVE_ALBUMS,
+        payload: res.data,
+      });
+    }
     dispatch({
-      type: RETRIEVE_ALBUMS,
-      payload: res.data,
+      type: LAST_ALBUM_RETRIEVED,
     });
   } catch (err) {
     console.log("front end error fetching.");

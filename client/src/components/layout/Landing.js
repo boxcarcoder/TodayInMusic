@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
@@ -20,19 +20,24 @@ const obtainAccessToken = () => {
 };
 
 const Landing = ({ getAllAlbums }) => {
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, decade) => {
     let accessToken = obtainAccessToken();
-    getAllAlbums(accessToken);
-    //return <Redirect to="/Albums" />;
+    getAllAlbums(accessToken, decade);
   };
 
   return (
     <Fragment>
       <h1>Today In Music</h1>
-
-      <Link onClick={(e) => handleSubmit(e)} to="/Albums">
-        Find Music!
-      </Link>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 2010)} to="/Albums">
+          2010-2019
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 2000)} to="/Albums">
+          2000-2009
+        </Link>
+      </div>
     </Fragment>
   );
 };

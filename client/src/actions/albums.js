@@ -10,16 +10,16 @@ export const getAllAlbums = (accessToken, decade) => async (dispatch) => {
       json: true,
     };
 
+    // Fetch all albums from each year within a requested decade
     for (let year = decade; year < decade + 10; year++) {
-      console.log("sent out action");
       const res = await axios.get(`/api/albums/${year}`, options);
-      console.log("got data back from spotify");
 
       dispatch({
         type: RETRIEVE_ALBUMS,
         payload: res.data,
       });
     }
+
     dispatch({
       type: LAST_ALBUM_RETRIEVED,
     });

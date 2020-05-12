@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
-import "./App.css";
+//import "./App.css";
+import "./scss/App.scss";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./components/layout/Landing";
 import Auth from "./components/layout/Auth";

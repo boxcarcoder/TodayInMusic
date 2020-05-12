@@ -10,6 +10,8 @@ const Albums = ({ albumsState: { albums, loading, finalLoad } }) => {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().slice(5, 10);
 
+  // As the getAllAlbums action updates the albums redux state, the Albums
+  // component re-renders since the albums redux state is a prop to the component.
   const displayAlbums = () => {
     if (loading) {
       //if no albums have been fetched by the Spotify API yet

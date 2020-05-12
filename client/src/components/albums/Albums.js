@@ -26,28 +26,42 @@ const Albums = ({ albumsState: { albums, loading, finalLoad } }) => {
         return (
           <Fragment>
             <Spinner />
-            {albums.map((album) => (
-              <AlbumItem
-                key={album.id}
-                name={album.name}
-                artist={album.artists[0].name}
-                img={album.images[1]}
-                url={album.external_urls}
-              />
-            ))}
+            <section className="albums">
+              <div className="albums-inner">
+                {albums.map((album) => (
+                  <AlbumItem
+                    key={album.id}
+                    name={album.name}
+                    artist={album.artists[0].name}
+                    img={album.images[1]}
+                    url={album.external_urls}
+                    date={album.release_date}
+                  />
+                ))}
+              </div>
+            </section>
           </Fragment>
         );
       } else {
         // At the end of all fetching, remove the spinner loader.
-        return albums.map((album) => (
-          <AlbumItem
-            key={album.id}
-            name={album.name}
-            artist={album.artists[0].name}
-            img={album.images[1]}
-            url={album.external_urls}
-          />
-        ));
+        return (
+          <Fragment>
+            <section className="albums">
+              <div className="albums-inner">
+                {albums.map((album) => (
+                  <AlbumItem
+                    key={album.id}
+                    name={album.name}
+                    artist={album.artists[0].name}
+                    img={album.images[1]}
+                    url={album.external_urls}
+                    date={album.release_date}
+                  />
+                ))}
+              </div>
+            </section>
+          </Fragment>
+        );
       }
     }
   };

@@ -6,7 +6,7 @@ import AlbumItem from "./AlbumItem";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const Albums = ({ albumsState: { albums, loading, finalLoad } }) => {
+const Albums = ({ albumsState: { albums, loading, finalLoad, currYear } }) => {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().slice(5, 10);
 
@@ -14,7 +14,7 @@ const Albums = ({ albumsState: { albums, loading, finalLoad } }) => {
   // component re-renders since the albums redux state is a prop to the component.
   const displayAlbums = () => {
     if (loading) {
-      //if no albums have been fetched by the Spotify API yet
+      // If no albums have been fetched by the Spotify API yet
       return (
         <Fragment>
           <Spinner />
@@ -25,41 +25,41 @@ const Albums = ({ albumsState: { albums, loading, finalLoad } }) => {
         // While the application is still fetching from the Spotify API, display what has been fetched already.
         return (
           <Fragment>
-            <Spinner />
-            <section className="albums">
-              <div className="albums-inner">
-                {albums.map((album) => (
-                  <AlbumItem
-                    key={album.id}
-                    name={album.name}
-                    artist={album.artists[0].name}
-                    img={album.images[1]}
-                    url={album.external_urls}
-                    date={album.release_date}
-                  />
-                ))}
-              </div>
-            </section>
+            <div>
+              <Spinner />
+              <p>Fetching albums from... {currYear}</p>
+            </div>
+
+            <div className="albumsPage">
+              {albums.map((album) => (
+                <AlbumItem
+                  key={album.id}
+                  name={album.name}
+                  artist={album.artists[0].name}
+                  img={album.images[1]}
+                  url={album.external_urls}
+                  date={album.release_date}
+                />
+              ))}
+            </div>
           </Fragment>
         );
       } else {
         // At the end of all fetching, remove the spinner loader.
         return (
           <Fragment>
-            <section className="albums">
-              <div className="albums-inner">
-                {albums.map((album) => (
-                  <AlbumItem
-                    key={album.id}
-                    name={album.name}
-                    artist={album.artists[0].name}
-                    img={album.images[1]}
-                    url={album.external_urls}
-                    date={album.release_date}
-                  />
-                ))}
-              </div>
-            </section>
+            <div className="albumsPage">
+              {albums.map((album) => (
+                <AlbumItem
+                  key={album.id}
+                  name={album.name}
+                  artist={album.artists[0].name}
+                  img={album.images[1]}
+                  url={album.external_urls}
+                  date={album.release_date}
+                />
+              ))}
+            </div>
           </Fragment>
         );
       }

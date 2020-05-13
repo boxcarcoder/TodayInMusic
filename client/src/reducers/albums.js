@@ -9,6 +9,7 @@ const initialState = {
   loading: true,
   error: {},
   finalLoad: false,
+  currYear: 0,
 };
 
 export default function (state = initialState, action) {
@@ -17,8 +18,9 @@ export default function (state = initialState, action) {
     case RETRIEVE_ALBUMS:
       return {
         ...state,
-        albums: payload.concat(...state.albums), //append more albums to the list of albums
+        albums: payload.albums.concat(...state.albums), //append more albums to the list of albums
         loading: false,
+        currYear: payload.currYear,
       };
     case LAST_ALBUM_RETRIEVED:
       return {

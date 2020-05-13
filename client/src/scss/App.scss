@@ -29,21 +29,50 @@ img {
   width: 100%;
 }
 
+.spinner {
+  display: block;
+}
+
 // album list tyle
-.albums {
+.albumsPage {
   position: relative;
   height: 65vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  //width: 10%;
+  margin: auto;
 
-  &-inner {
-    //height: 100%;
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
+  // width: 10%;
+  // margin: auto;
+  // align-items: center;
+  // justify-content: center;
+  // text-align: center;
+
+  // &-inner {
+  //   // original --didn't work
+  //   // height: 100%;
+  //   // display: flex;
+  //   // flex-direction: row;
+  //   // flex-wrap: wrap;
+  //   width: 10%;
+  //   margin: auto;
+  //   align-items: center;
+  //   justify-content: center;
+  //   text-align: center;
+  // }
+}
+
+.albumObj {
+  width: 250px;
+  height: 350px;
+  text-align: center;
+  background-color: $light-color;
+}
+
+.albumImg {
+  width: 200px;
+  height: 200px;
 }
 
 // Background styles

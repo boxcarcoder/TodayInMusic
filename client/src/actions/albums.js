@@ -16,7 +16,7 @@ export const getAllAlbums = (accessToken, decade) => async (dispatch) => {
 
       dispatch({
         type: RETRIEVE_ALBUMS,
-        payload: res.data,
+        payload: { albums: res.data, currYear: year },
       });
     }
 

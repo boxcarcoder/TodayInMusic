@@ -38,6 +38,56 @@ const Landing = ({ getAllAlbums }) => {
           2000-2009
         </Link>
       </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1990)} to="/Albums">
+          1990-1999
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1980)} to="/Albums">
+          1980-1989
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1970)} to="/Albums">
+          1970-1979
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1960)} to="/Albums">
+          1960-1969
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1950)} to="/Albums">
+          1950-1959
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1940)} to="/Albums">
+          1940-1949
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1930)} to="/Albums">
+          1930-1939
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1920)} to="/Albums">
+          1920-1929
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1910)} to="/Albums">
+          1910-1919
+        </Link>
+      </div>
+      <div>
+        <Link onClick={(e) => handleSubmit(e, 1900)} to="/Albums">
+          1900-1909
+        </Link>
+      </div>
     </Fragment>
   );
 };

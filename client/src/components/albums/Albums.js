@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Spinner from "../layout/Spinner";
 import AlbumItem from "./AlbumItem";
+import { Link } from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
@@ -26,11 +27,11 @@ const Albums = ({ albumsState: { albums, loading, finalLoad, currYear } }) => {
         return (
           <Fragment>
             <div>
+              <h3 className="spinner">Fetching albums from... {currYear}</h3>
               <Spinner />
-              <p>Fetching albums from... {currYear}</p>
             </div>
 
-            <div className="albumsPage">
+            <div className="albumsLayout">
               {albums.map((album) => (
                 <AlbumItem
                   key={album.id}
@@ -48,7 +49,7 @@ const Albums = ({ albumsState: { albums, loading, finalLoad, currYear } }) => {
         // At the end of all fetching, remove the spinner loader.
         return (
           <Fragment>
-            <div className="albumsPage">
+            <div className="albumsLayout">
               {albums.map((album) => (
                 <AlbumItem
                   key={album.id}
@@ -70,6 +71,9 @@ const Albums = ({ albumsState: { albums, loading, finalLoad, currYear } }) => {
     <Fragment>
       <h1>Today In Music: {formattedDate}</h1>
       {displayAlbums()}
+      <Link className="btn btn-primary btn-small" to="/Landing">
+        Go Back
+      </Link>
     </Fragment>
   );
 };

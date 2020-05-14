@@ -1,0 +1,79 @@
+body {
+  font-family: "Baskerville", serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+  border: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-color;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+// Background styles
+.bg {
+  &-primary {
+    @include set-background($primary-color);
+  }
+  &-light {
+    @include set-background($light-color);
+    border: #ccc 1px solid;
+  }
+  &-dark {
+    @include set-background($dark-color);
+  }
+}
+
+.btn {
+  display: inline-block;
+  background: $light-color;
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  outline: none;
+  transition: all 0.2s ease-in;
+
+  &.btn-primary {
+    @include set-background($primary-color);
+    &:hover {
+      background: lighten($primary-color, 15%);
+    }
+  }
+  &.btn-dark {
+    @include set-background($dark-color);
+    &:hover {
+      background: lighten($dark-color, 15%);
+    }
+  }
+  &.btn-small {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.7rem;
+  }
+
+  &:hover {
+    background: lighten($dark-color, 25%);
+    color: white;
+  }
+}
+
+.container {
+  max-width: $max-width;
+  margin: auto;
+  //   overflow: hidden;
+  padding: 0.5rem 1rem;
+  //   margin-top: 3rem;
+  //   margin-bottom: 1rem;
+}

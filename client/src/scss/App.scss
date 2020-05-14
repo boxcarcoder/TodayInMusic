@@ -1,42 +1,21 @@
 @import "config";
+@import "utilities";
 
-// core styles
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: "Baskerville", serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  background-color: #fff;
-  color: #333;
-  border: none !important;
-}
-
-a {
-  text-decoration: none;
-  color: $primary-color;
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  width: 100%;
-}
-
 .spinner {
   display: block;
+  text-align: center;
 }
 
 // album list tyle
-.albumsPage {
+.albumsLayout {
   position: relative;
-  height: 65vh;
+  height: auto; //65vh
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -73,28 +52,4 @@ img {
 .albumImg {
   width: 200px;
   height: 200px;
-}
-
-// Background styles
-.bg {
-  &-primary {
-    @include set-background($primary-color);
-  }
-  &-light {
-    @include set-background($light-color);
-    border: #ccc 1px solid;
-  }
-  &-dark {
-    @include set-background($dark-color);
-  }
-  &-success {
-    @include set-background($success-color);
-  }
-  &-danger {
-    @include set-background($danger-color);
-  }
-  &-white {
-    @include set-background(#fff);
-    border: #ccc 1px solid;
-  }
 }

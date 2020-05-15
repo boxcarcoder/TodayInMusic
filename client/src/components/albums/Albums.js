@@ -7,7 +7,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const Albums = ({ albumsState: { albums, loading, finalLoad, currYear } }) => {
+const Albums = ({
+  albumsState: { albums, loading, finalLoad, currYear },
+  authState: { token },
+}) => {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().slice(5, 10);
 
@@ -67,23 +70,38 @@ const Albums = ({ albumsState: { albums, loading, finalLoad, currYear } }) => {
     }
   };
 
+  const displayBackBtn = () => {
+    if (finalLoad) {
+      return (
+        <Link
+          className="btn btn-primary btn-small"
+          to={{
+            pathname: `/Landing/?access_token=${token.toString()}`,
+          }}
+        >
+          Go Back
+        </Link>
+      );
+    }
+  };
+
   return (
     <Fragment>
       <h1>Today In Music: {formattedDate}</h1>
       {displayAlbums()}
-      <Link className="btn btn-primary btn-small" to="/Landing">
-        Go Back
-      </Link>
+      {displayBackBtn()}
     </Fragment>
   );
 };
 
 Albums.propTypes = {
   albumsState: PropTypes.object.isRequired,
+  authState: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   albumsState: state.albums,
+  authState: state.auth,
 });
 
 export default connect(mapStateToProps)(Albums);

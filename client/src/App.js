@@ -20,7 +20,17 @@ const App = () => {
           <section className="container">
             <Switch>
               <Route exact path="/Landing" component={Landing} />
+              <Route
+                exact
+                path="/Landing/?access_token=:token"
+                component={Landing}
+              />
               <Route exact path="/Albums" component={Albums} />
+              <Route
+                exact
+                path="/Albums/?access_token=:token"
+                component={Albums}
+              />
 
               {/* <Route exact path="/MusicToday" component={MusicToday} />
               <Route

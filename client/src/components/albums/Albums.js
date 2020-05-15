@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Spinner from "../layout/Spinner";
 import AlbumItem from "./AlbumItem";
 import { Link } from "react-router-dom";
+import { clearAllAlbums } from "../../actions/albums";
 
 // redux
 import { connect } from "react-redux";
@@ -10,6 +11,7 @@ import PropTypes from "prop-types";
 const Albums = ({
   albumsState: { albums, loading, finalLoad, currYear },
   authState: { token },
+  clearAllAlbums,
 }) => {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().slice(5, 10);
@@ -75,6 +77,7 @@ const Albums = ({
       return (
         <Link
           className="btn btn-primary btn-small"
+          onClick={() => clearAllAlbums()}
           to={{
             pathname: `/Landing/?access_token=${token.toString()}`,
           }}
@@ -97,6 +100,7 @@ const Albums = ({
 Albums.propTypes = {
   albumsState: PropTypes.object.isRequired,
   authState: PropTypes.object.isRequired,
+  clearAllAlbums: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -104,4 +108,4 @@ const mapStateToProps = (state) => ({
   authState: state.auth,
 });
 
-export default connect(mapStateToProps)(Albums);
+export default connect(mapStateToProps, { clearAllAlbums })(Albums);

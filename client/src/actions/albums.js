@@ -1,4 +1,9 @@
-import { RETRIEVE_ALBUMS, ALBUMS_ERROR, LAST_ALBUM_RETRIEVED } from "./types";
+import {
+  RETRIEVE_ALBUMS,
+  ALBUMS_ERROR,
+  LAST_ALBUM_RETRIEVED,
+  CLEAR_ALBUMS,
+} from "./types";
 import axios from "axios";
 
 export const getAllAlbums = (accessToken, decade) => async (dispatch) => {
@@ -24,7 +29,21 @@ export const getAllAlbums = (accessToken, decade) => async (dispatch) => {
       type: LAST_ALBUM_RETRIEVED,
     });
   } catch (err) {
-    console.log("front end error fetching.");
+    console.log("getAllAlbums action error fetching.");
+    dispatch({
+      type: ALBUMS_ERROR,
+      payload: { msg: err.res.statusText, status: err.res.status },
+    });
+  }
+};
+
+export const clearAllAlbums = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: CLEAR_ALBUMS,
+    });
+  } catch (err) {
+    console.log("clearAllAlbums action error.");
     dispatch({
       type: ALBUMS_ERROR,
       payload: { msg: err.res.statusText, status: err.res.status },

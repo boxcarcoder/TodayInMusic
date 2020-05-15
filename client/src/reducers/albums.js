@@ -2,6 +2,7 @@ import {
   RETRIEVE_ALBUMS,
   ALBUMS_ERROR,
   LAST_ALBUM_RETRIEVED,
+  CLEAR_ALBUMS,
 } from "../actions/types";
 
 const initialState = {
@@ -26,6 +27,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         finalLoad: true,
+      };
+    case CLEAR_ALBUMS:
+      return {
+        ...state,
+        albums: [],
+        loading: true,
+        finalLoad: false,
+        currYear: 0,
       };
     case ALBUMS_ERROR:
       return {

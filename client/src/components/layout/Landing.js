@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import getCurrentDate from "../../utils/getCurrentDate";
 
 // redux
 import { connect } from "react-redux";
@@ -21,6 +22,9 @@ const obtainAccessToken = () => {
 };
 
 const Landing = ({ getAllAlbums, storeAccessToken }) => {
+  // Get Current Month and Date
+  const currentDate = getCurrentDate("MONTH_AND_DAY");
+
   // Fetch token from URL query.
   let accessToken = obtainAccessToken();
 
@@ -33,7 +37,8 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
 
   return (
     <Fragment>
-      <h1>Today In Music</h1>
+      <header>Today In Music</header>
+      <div className="subHeader">{currentDate}</div>
       <div>
         <Link
           onClick={(e) => handleSubmit(e, 2010)}

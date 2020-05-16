@@ -44,3 +44,13 @@ $remamounts: (1, 2, 3, 4, 5);
     padding: #{$rem}rem 0;
   }
 }
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../fonts/playfair-display/PlayfairDisplay-Black.otf");
+}
+
+@font-face {
+  font-family: "Droid Serif";
+  src: url("../fonts/droid-serif/DroidSerif-Regular.ttf");
+}

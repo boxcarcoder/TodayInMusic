@@ -3,6 +3,7 @@ import Spinner from "../layout/Spinner";
 import AlbumItem from "./AlbumItem";
 import { Link } from "react-router-dom";
 import { clearAllAlbums } from "../../actions/albums";
+import getCurrentDate from "../../utils/getCurrentDate";
 
 // redux
 import { connect } from "react-redux";
@@ -13,8 +14,8 @@ const Albums = ({
   authState: { token },
   clearAllAlbums,
 }) => {
-  const currentDate = new Date();
-  const formattedDate = currentDate.toISOString().slice(5, 10);
+  // Get current date
+  const monthAndDay = getCurrentDate("MONTH_AND_DAY");
 
   // As the getAllAlbums action updates the albums redux state, the Albums
   // component re-renders since the albums redux state is a prop to the component.
@@ -90,7 +91,7 @@ const Albums = ({
 
   return (
     <Fragment>
-      <h1>Today In Music: {formattedDate}</h1>
+      <h1>Today In Music: {monthAndDay}</h1>
       {displayAlbums()}
       {displayBackBtn()}
     </Fragment>

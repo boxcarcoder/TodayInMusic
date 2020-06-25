@@ -3,6 +3,7 @@ import {
   ALBUMS_ERROR,
   LAST_ALBUM_RETRIEVED,
   CLEAR_ALBUMS,
+  SET_INITIAL_CURR_YEAR,
 } from "../actions/types";
 
 const initialState = {
@@ -42,7 +43,11 @@ export default function (state = initialState, action) {
         error: payload,
         loading: false,
       };
-
+    case SET_INITIAL_CURR_YEAR:
+      return {
+        ...state,
+        currYear: payload,
+      };
     default:
       return state;
   }

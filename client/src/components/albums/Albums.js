@@ -24,12 +24,13 @@ const Albums = ({
       // If no albums have been fetched by the Spotify API yet
       return (
         <Fragment>
+          <h3 className="subHeader">Fetching albums from... {currYear}</h3>
           <Spinner />
         </Fragment>
       );
     } else {
       if (!finalLoad) {
-        // While the application is still fetching from the Spotify API, display what has been fetched already.
+        // While the application is still fetching from the Spotify API, display what has been fetched so far.
         return (
           <Fragment>
             <div>

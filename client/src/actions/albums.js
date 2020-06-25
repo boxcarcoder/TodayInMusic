@@ -3,11 +3,18 @@ import {
   ALBUMS_ERROR,
   LAST_ALBUM_RETRIEVED,
   CLEAR_ALBUMS,
+  SET_INITIAL_CURR_YEAR,
 } from "./types";
 import axios from "axios";
 
 export const getAllAlbums = (accessToken, decade) => async (dispatch) => {
   try {
+    // Set the initial currYear state for the frontend's Albums component's subheader.
+    dispatch({
+      type: SET_INITIAL_CURR_YEAR,
+      payload: decade,
+    });
+
     // Send the request, to get all albums, to the backend with the access token.
     let options = {
       // prettier-ignore

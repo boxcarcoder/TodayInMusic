@@ -31,17 +31,13 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
   // Store the access token into a redux state.
   storeAccessToken(accessToken);
 
-  const handleSubmit = (e, decade) => {
-    getAllAlbums(accessToken, decade);
-  };
-
   return (
     <Fragment>
       <header>Today In Music</header>
       <div className="subHeader">{currentDate}</div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 2010)}
+          onClick={(e) => getAllAlbums(accessToken, 2010)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           2010-2019
@@ -49,7 +45,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 2000)}
+          onClick={(e) => getAllAlbums(accessToken, 2000)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           2000-2009
@@ -57,7 +53,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1990)}
+          onClick={(e) => getAllAlbums(accessToken, 1990)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1990-1999
@@ -65,7 +61,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1980)}
+          onClick={(e) => getAllAlbums(accessToken, 1980)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1980-1989
@@ -73,7 +69,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1970)}
+          onClick={(e) => getAllAlbums(accessToken, 1970)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1970-1979
@@ -81,7 +77,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1960)}
+          onClick={(e) => getAllAlbums(accessToken, 1960)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1960-1969
@@ -89,7 +85,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1950)}
+          onClick={(e) => getAllAlbums(accessToken, 1950)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1950-1959
@@ -97,7 +93,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1940)}
+          onClick={(e) => getAllAlbums(accessToken, 1940)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1940-1949
@@ -105,7 +101,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1930)}
+          onClick={(e) => getAllAlbums(accessToken, 1930)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1930-1939
@@ -113,7 +109,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1920)}
+          onClick={(e) => getAllAlbums(accessToken, 1920)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1920-1929
@@ -121,7 +117,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1910)}
+          onClick={(e) => getAllAlbums(accessToken, 1910)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1910-1919
@@ -129,7 +125,7 @@ const Landing = ({ getAllAlbums, storeAccessToken }) => {
       </div>
       <div>
         <Link
-          onClick={(e) => handleSubmit(e, 1900)}
+          onClick={(e) => getAllAlbums(accessToken, 1900)}
           to={{ pathname: `/Albums/?access_token=${accessToken}` }}
         >
           1900-1909

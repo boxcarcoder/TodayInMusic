@@ -17,6 +17,7 @@ export const getAllAlbums = (accessToken, decade) => async (dispatch) => {
 
     // Fetch all albums from each year within a requested decade
     for (let year = decade; year < decade + 10; year++) {
+      // Make a request to my backend.
       const res = await axios.get(`/api/albums/${year}`, options);
 
       dispatch({

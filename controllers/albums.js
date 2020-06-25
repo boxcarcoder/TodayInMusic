@@ -3,7 +3,7 @@ const axios = require("axios");
 
 const fetchAlbumsByYear = async (options, year) => {
   try {
-    let allAlbums = [];
+    let allAlbumsPerYear = [];
     const date = new Date();
 
     // Spotify api allows max limit to be 50
@@ -33,13 +33,12 @@ const fetchAlbumsByYear = async (options, year) => {
               albumsFromSpotify.data.albums.items[j].name
           );
           //console.log(albumsFromSpotify.data.albums.items[j]);
-          allAlbums.push(albumsFromSpotify.data.albums.items[j]);
+          allAlbumsPerYear.push(albumsFromSpotify.data.albums.items[j]);
         }
       }
     }
 
-    console.log("done scraping.");
-    return allAlbums;
+    return allAlbumsPerYear;
   } catch (err) {
     console.log("error fetching all albums");
     console.error(err);
@@ -49,7 +48,7 @@ const fetchAlbumsByYear = async (options, year) => {
 // @route   GET /api/albums/:year
 albumsRouter.get("/:year", async (req, res) => {
   try {
-    // get the access token sent from the getAllAlbums action.
+    // get the access token sent from the getallAlbums action.
     let accessToken = req.headers.authorization;
 
     let options = {
@@ -58,9 +57,9 @@ albumsRouter.get("/:year", async (req, res) => {
       json: true,
     };
 
-    let allAlbums = await fetchAlbumsByYear(options, req.params.year);
+    let allAlbumsPerYear = await fetchAlbumsByYear(options, req.params.year);
 
-    res.json(allAlbums);
+    res.json(allAlbumsPerYear);
   } catch (err) {
     console.log("back end error fetching.");
 

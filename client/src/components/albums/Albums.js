@@ -33,7 +33,7 @@ const Albums = ({
         return (
           <Fragment>
             <div>
-              <h3 className="spinner">Fetching albums from... {currYear}</h3>
+              <h3 className="subHeader">Fetching albums from... {currYear}</h3>
               <Spinner />
             </div>
 
@@ -91,7 +91,7 @@ const Albums = ({
 
   return (
     <Fragment>
-      <h1>Today In Music: {monthAndDay}</h1>
+      <header>Today In Music: {monthAndDay}</header>
       {displayAlbums()}
       {displayBackBtn()}
     </Fragment>

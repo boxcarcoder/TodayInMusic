@@ -7,10 +7,10 @@
   padding: 0;
 }
 
-.spinner {
-  display: block;
-  text-align: center;
-}
+// .spinner {
+//   display: block;
+//   text-align: center;
+// }
 
 // album list tyle
 .albumsLayout {
@@ -23,10 +23,10 @@
   margin: auto;
 
   // width: 10%;
-  // margin: auto;
-  // align-items: center;
-  // justify-content: center;
-  // text-align: center;
+  margin: 1em;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
   // &-inner {
   //   // original --didn't work
@@ -47,11 +47,17 @@
   height: 350px;
   text-align: center;
   background-color: $light-color;
+  margin: 0.4em;
+  border: thin solid;
 }
 
 .albumImg {
   width: 200px;
   height: 200px;
+}
+
+.albumListHeader {
+  text-align: center;
 }
 
 // // landing page styles

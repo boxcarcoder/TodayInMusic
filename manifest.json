@@ -1,0 +1,11 @@
+{
+  "name": "Today In Music",
+  "version": "1.0",
+  "description": "Find albums released on today's date in any past year.",
+  "permissions": ["storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "manifest_version": 2
+}
